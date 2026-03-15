@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshal Borase | Professional Sketch Artist - harshh_b_arts</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <nav class="container">
+            <div class="logo">harshh_b_arts</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content reveal">
+            <h1 class="playfair">Harshal Borase</h1>
+            <p class="subtitle">Professional Sketch Artist</p>
+            <div class="hero-image-placeholder">
+                <i class="fa-solid fa-paintbrush fa-3x"></i>
+                <p>Signature Sketch Intro</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about container reveal">
+        <h2 class="playfair">About the Artist</h2>
+        <div class="about-content">
+            <p>I am Harshal Borase, a professional sketch artist dedicated to capturing emotions and realism through charcoal and graphite. With a passion for fine details and cinematic art, my work aims to bring life to every stroke on paper.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section (Interactive) -->
+    <section id="gallery" class="gallery container reveal">
+        <h2 class="playfair">Gallery</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="anatomical">Anatomical Sketches</button>
+            <button class="filter-btn" data-category="portraits">Portraits</button>
+            <button class="filter-btn" data-category="cinematic">Cinematic Art</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Items added via JS or manually for now -->
+            <div class="gallery-item reveal" data-category="portraits">
+                <div class="placeholder-img" style="background: #222;">Portrait 1</div>
+            </div>
+            <div class="gallery-item reveal" data-category="anatomical">
+                <div class="placeholder-img" style="background: #222;">Anatomical 1</div>
+            </div>
+            <div class="gallery-item reveal" data-category="cinematic">
+                <div class="placeholder-img" style="background: #222;">Cinematic 1</div>
+            </div>
+            <div class="gallery-item reveal" data-category="portraits">
+                <div class="placeholder-img" style="background: #222;">Portrait 2</div>
+            </div>
+            <div class="gallery-item reveal" data-category="anatomical">
+                <div class="placeholder-img" style="background: #222;">Anatomical 2</div>
+            </div>
+            <div class="gallery-item reveal" data-category="cinematic">
+                <div class="placeholder-img" style="background: #222;">Cinematic 2</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commission Services -->
+    <section id="services" class="services container reveal">
+        <h2 class="playfair">Commission Services</h2>
+        <div class="pricing-table">
+            <div class="pricing-card reveal">
+                <h3>A4 Size Sketch</h3>
+                <div class="price">₹1,500</div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Ultra-realistic detail</li>
+                    <li><i class="fas fa-check"></i> Premium Paper</li>
+                    <li><i class="fas fa-check"></i> Framing available</li>
+                </ul>
+                <button class="btn-gold book-btn" data-size="A4" data-price="1500">Book Now</button>
+            </div>
+            <div class="pricing-card reveal">
+                <h3>A3 Size Sketch</h3>
+                <div class="price">₹2,500</div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Ultra-realistic detail</li>
+                    <li><i class="fas fa-check"></i> Premium Paper</li>
+                    <li><i class="fas fa-check"></i> Framing available</li>
+                </ul>
+                <button class="btn-gold book-btn" data-size="A3" data-price="2500">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact container reveal">
+        <h2 class="playfair">Get in Touch</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+                <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn-gold">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/harshh_b_arts/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a><i class="fas fa-phone"></i> +91 9881413638</a>
+        </div>
+        <p>&copy; 2026 harshh_b_arts | Harshal Borase. All rights reserved.</p>
+    </footer>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content reveal">
+            <span class="close-modal">&times;</span>
+            <h2 class="playfair">Confirm Your Order</h2>
+            <p id="orderSummary">You are ordering a <span id="selectedSize"></span> Sketch for <span id="selectedPrice"></span>.</p>
+            <form id="orderForm">
+                <div class="form-group">
+                    <input type="text" id="orderName" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="orderPhone" placeholder="WhatsApp Number" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="orderNote" rows="3" placeholder="Any special requests? (e.g. Occasion, deadline)"></textarea>
+                </div>
+                <p class="instruction-text">Note: You will be redirected to WhatsApp to send your reference photo.</p>
+                <button type="submit" class="btn-gold">Proceed to WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+        <div class="lightbox-nav">
+            <button id="prevBtn">&lt;</button>
+            <button id="nextBtn">&gt;</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
