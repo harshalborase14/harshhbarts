@@ -180,18 +180,62 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookButtons = document.querySelectorAll('.book-btn');
     const closeModalBtn = document.querySelector('.close-modal');
     const selectedSizeSpan = document.getElementById('selectedSize');
-    const selectedPriceSpan = document.getElementById('selectedPrice');
+    const finalTotalPriceSpan = document.getElementById('finalTotalPrice');
     const orderForm = document.getElementById('orderForm');
+    
+    // Calculator Inputs
+    const portraitCategory = document.getElementById('portraitCategory');
+    const framingOption = document.getElementById('framingOption');
+    const shippingOption = document.getElementById('shippingOption');
+
+    let basePrice = 0;
+    let currentSize = '';
 
     if (orderModal && bookButtons.length > 0) {
+        function calculateTotal() {
+            let total = basePrice;
+            const category = portraitCategory.value;
+            const framing = framingOption.value;
+            const shipping = shippingOption.value;
+
+            // Portrait Category Logic
+            if (category === 'couple') total += 500;
+            if (category === 'group') {
+                total = (currentSize === 'A4') ? 3000 : 5000;
+            }
+            if (category === 'babygod') total -= 500;
+
+            // Framing Logic
+            if (framing === 'yes') {
+                total += (currentSize === 'A4') ? 250 : 500;
+            }
+
+            // Shipping Logic
+            if (shipping === 'mh') total += 100;
+            if (shipping === 'outside') total += 200;
+
+            if (finalTotalPriceSpan) finalTotalPriceSpan.innerText = `₹${total}`;
+            return total;
+        }
+
+        // Add listeners for real-time calculation
+        [portraitCategory, framingOption, shippingOption].forEach(el => {
+            if (el) el.addEventListener('change', calculateTotal);
+        });
+
         bookButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                const size = btn.getAttribute('data-size');
-                const price = btn.getAttribute('data-price');
+                currentSize = btn.getAttribute('data-size');
+                basePrice = parseInt(btn.getAttribute('data-price'));
                 
-                if (selectedSizeSpan) selectedSizeSpan.innerText = size;
-                if (selectedPriceSpan) selectedPriceSpan.innerText = `₹${price}`;
+                if (selectedSizeSpan) selectedSizeSpan.innerText = currentSize;
                 
+                // Reset form to defaults
+                if (portraitCategory) portraitCategory.value = 'single';
+                if (framingOption) framingOption.value = 'no';
+                if (shippingOption) shippingOption.value = 'pickup';
+                
+                calculateTotal();
                 orderModal.style.display = 'flex';
                 document.body.classList.add('modal-open');
             });
@@ -216,11 +260,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 const name = document.getElementById('orderName').value;
                 const phone = document.getElementById('orderPhone').value;
-                const note = document.getElementById('orderNote').value;
-                const size = selectedSizeSpan ? selectedSizeSpan.innerText : 'Unknown';
-                const price = selectedPriceSpan ? selectedPriceSpan.innerText : 'Unknown';
+                const address = document.getElementById('orderAddress').value;
+                const total = calculateTotal();
+                
+                const catText = portraitCategory.options[portraitCategory.selectedIndex].text;
+                const frameText = framingOption.options[framingOption.selectedIndex].text;
+                const shipText = shippingOption.options[shippingOption.selectedIndex].text;
 
-                const message = `Hi Harshal! I'd like to place a commission order.%0A%0A*Order Details:*%0A- *Size:* ${size}%0A- *Price:* ${price}%0A- *Name:* ${name}%0A- *WhatsApp:* ${phone}%0A- *Note:* ${note || 'None'}%0A%0AI'm sending the reference photo now.`;
+                const message = `Hi Harshal! I'd like to place a commission order.%0A%0A*Order Details:*%0A- *Size:* ${currentSize}%0A- *Category:* ${catText}%0A- *Framing:* ${frameText}%0A- *Delivery:* ${shipText}%0A- *Total Price:* ₹${total}%0A%0A*Customer Info:*%0A- *Name:* ${name}%0A- *WhatsApp:* ${phone}%0A- *Address:* ${address}%0A%0AI'm sending the reference photo now.`;
+                
                 const whatsappUrl = `https://wa.me/919881413638?text=${message}`;
                 window.open(whatsappUrl, '_blank');
                 orderModal.style.display = 'none';
