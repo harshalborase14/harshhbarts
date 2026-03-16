@@ -57,9 +57,37 @@
     <div id="orderModal" class="modal">
         <div class="modal-content reveal">
             <span class="close-modal">&times;</span>
-            <h2 class="playfair">Confirm Your Order</h2>
-            <p id="orderSummary">You are ordering a <span id="selectedSize"></span> Sketch for <span id="selectedPrice"></span>.</p>
+            <h2 class="playfair">Customize Your Order</h2>
+            <p id="orderSummary">Ordering <span id="selectedSize"></span> Sketch</p>
+            
             <form id="orderForm">
+                <div class="form-group">
+                    <label>Portrait Category:</label>
+                    <select id="portraitCategory" required>
+                        <option value="single">Single Portrait (Standard)</option>
+                        <option value="couple">Couple Portrait (+500 INR)</option>
+                        <option value="group">Group Photo (A4: 3000 / A3: 5000)</option>
+                        <option value="babygod">Gods or Babies (-500 INR Discount)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Framing Options:</label>
+                    <select id="framingOption" required>
+                        <option value="no">No Frame (Paper only)</option>
+                        <option value="yes">With Premium Frame (+250/500 INR)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Shipping / Delivery:</label>
+                    <select id="shippingOption" required>
+                        <option value="pickup">Self Pickup (Maharashtra) - Free</option>
+                        <option value="mh">Shipping inside Maharashtra (+100 INR)</option>
+                        <option value="outside">Shipping outside Maharashtra (+200 INR)</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <input type="text" id="orderName" placeholder="Full Name" required>
                 </div>
@@ -67,9 +95,15 @@
                     <input type="tel" id="orderPhone" placeholder="WhatsApp Number" required>
                 </div>
                 <div class="form-group">
-                    <textarea id="orderNote" rows="3" placeholder="Any special requests? (e.g. Occasion, deadline)"></textarea>
+                    <textarea id="orderAddress" rows="2" placeholder="Full Delivery Address" required></textarea>
                 </div>
-                <p class="instruction-text">Note: You will be redirected to WhatsApp to send your reference photo.</p>
+
+                <div class="total-price-box">
+                    <span>Final Amount:</span>
+                    <span id="finalTotalPrice">₹0</span>
+                </div>
+
+                <p class="instruction-text">Note: You will be redirected to WhatsApp to confirm and send your reference photo.</p>
                 <button type="submit" class="btn-gold">Proceed to WhatsApp</button>
             </form>
         </div>
