@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | harshh_b_arts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="sticky-header">
+        <nav class="container">
+            <div class="logo">harshh_b_arts</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="gallery.html" class="active-link">Gallery</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="gallery container reveal active">
+        <h2 class="playfair">Art Gallery</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="portraits">Portraits</button>
+            <button class="filter-btn" data-category="anatomical">Anatomical Sketches</button>
+            <button class="filter-btn" data-category="cinematic">Cinematic Art</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Portraits (Add your portrait images here) -->
+            
+            <!-- Anatomical Sketches -->
+            <div class="gallery-item reveal" data-category="anatomical">
+                <img src="images/Anatomy1.jpg" alt="Anatomical Sketch 1" class="gallery-img">
+            </div>
+            <div class="gallery-item reveal" data-category="anatomical">
+                <img src="images/Anatomy2.png" alt="Anatomical Sketch 2" class="gallery-img">
+            </div>
+            <div class="gallery-item reveal" data-category="anatomical">
+                <img src="images/Anatomy3.png" alt="Anatomical Sketch 3" class="gallery-img">
+            </div>
+            <div class="gallery-item reveal" data-category="anatomical">
+                <img src="images/Anatomy4.png" alt="Anatomical Sketch 4" class="gallery-img">
+            </div>
+
+            <!-- Cinematic Art -->
+            <div class="gallery-item reveal" data-category="cinematic">
+                <img src="images/Cinamatic1.jpg" alt="Cinematic Art 1" class="gallery-img">
+            </div>
+            <div class="gallery-item reveal" data-category="cinematic">
+                <img src="images/Cinamatic2.jpg" alt="Cinematic Art 2" class="gallery-img">
+            </div>
+            <div class="gallery-item reveal" data-category="cinematic">
+                <img src="images/Cinamatic3.jpg" alt="Cinematic Art 3" class="gallery-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+        <div class="lightbox-nav">
+            <button id="prevBtn">&lt;</button>
+            <button id="nextBtn">&gt;</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 harshh_b_arts | Harshal Borase. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
