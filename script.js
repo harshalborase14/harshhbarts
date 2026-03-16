@@ -258,6 +258,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (orderForm) {
             orderForm.addEventListener('submit', (e) => {
                 e.preventDefault();
+                const submitBtn = orderForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerText;
+                
+                // Show loading state
+                submitBtn.innerText = "Sending Order...";
+                submitBtn.disabled = true;
+
                 const name = document.getElementById('orderName').value;
                 const phone = document.getElementById('orderPhone').value;
                 const address = document.getElementById('orderAddress').value;
@@ -267,13 +274,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 const frameText = framingOption.options[framingOption.selectedIndex].text;
                 const shipText = shippingOption.options[shippingOption.selectedIndex].text;
 
-                const message = `Hi Harshal! I'd like to place a commission order.%0A%0A*Order Details:*%0A- *Size:* ${currentSize}%0A- *Category:* ${catText}%0A- *Framing:* ${frameText}%0A- *Delivery:* ${shipText}%0A- *Total Price:* ₹${total}%0A%0A*Customer Info:*%0A- *Name:* ${name}%0A- *WhatsApp:* ${phone}%0A- *Address:* ${address}%0A%0AI'm sending the reference photo now.`;
-                
-                const whatsappUrl = `https://wa.me/919881413638?text=${message}`;
-                window.open(whatsappUrl, '_blank');
-                orderModal.style.display = 'none';
-                document.body.classList.remove('modal-open');
-                orderForm.reset();
+                // Prepare EmailJS Template Parameters
+                const templateParams = {
+                    from_name: name,
+                    customer_phone: phone,
+                    customer_address: address,
+                    art_size: currentSize,
+                    art_category: catText,
+                    framing: frameText,
+                    shipping: shipText,
+                    total_price: `INR ${total}`,
+                    order_date: new Date().toLocaleString()
+                };
+
+                // Send Email via EmailJS
+                // service_8ry8q0g is your Service ID
+                // template_nahrc5o is your Template ID
+                emailjs.send('service_8ry8q0g', 'template_nahrc5o', templateParams)
+                    .then(() => {
+                        alert("Thank you, Harshal! Your order has been submitted. I will contact you manually on WhatsApp shortly.");
+                        orderModal.style.display = 'none';
+                        document.body.classList.remove('modal-open');
+                        orderForm.reset();
+                    }, (error) => {
+                        console.error('EmailJS Error:', error);
+                        alert("Oops! Something went wrong while sending the order. Please try again or contact me directly on Instagram.");
+                    })
+                    .finally(() => {
+                        submitBtn.innerText = originalBtnText;
+                        submitBtn.disabled = false;
+                    });
             });
         }
     }
