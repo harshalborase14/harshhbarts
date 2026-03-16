@@ -9,6 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Updated Public Key
+            emailjs.init("WHUIF8OpbQITnZD51");
+        })();
+    </script>
 </head>
 <body>
     <header class="sticky-header">
@@ -103,8 +111,8 @@
                     <span id="finalTotalPrice">₹0</span>
                 </div>
 
-                <p class="instruction-text">Note: You will be redirected to WhatsApp to confirm and send your reference photo.</p>
-                <button type="submit" class="btn-gold">Proceed to WhatsApp</button>
+                <p class="instruction-text">Note: Harshal will contact you manually on the provided WhatsApp number after reviewing your order.</p>
+                <button type="submit" class="btn-gold">Submit My Order</button>
             </form>
         </div>
     </div>
