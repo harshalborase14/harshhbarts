@@ -18,23 +18,26 @@
     <header class="sticky-header">
         <nav class="container">
             <div class="logo">harshh_b_arts</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.html" class="active-link">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content reveal">
+        <div class="hero-content reveal active">
             <h1 class="playfair">Harshal Borase</h1>
             <p class="subtitle">Professional Sketch Artist</p>
             <div class="hero-image-container">
-                <img src="artist-photo.jpg" alt="Harshal Borase - Artist" class="artist-photo">
+                <img src="images/artist-photo.jpg" alt="Harshal Borase - Artist" class="artist-photo">
             </div>
         </div>
     </section>
@@ -45,82 +48,6 @@
         <div class="about-content">
             <p>I am Harshal Borase, a professional sketch artist dedicated to capturing emotions and realism through charcoal and graphite. With a passion for fine details and cinematic art, my work aims to bring life to every stroke on paper.</p>
         </div>
-    </section>
-
-    <!-- Gallery Section (Interactive) -->
-    <section id="gallery" class="gallery container reveal">
-        <h2 class="playfair">Gallery</h2>
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-category="all">All</button>
-            <button class="filter-btn" data-category="anatomical">Anatomical Sketches</button>
-            <button class="filter-btn" data-category="portraits">Portraits</button>
-            <button class="filter-btn" data-category="cinematic">Cinematic Art</button>
-        </div>
-        <div class="gallery-grid" id="galleryGrid">
-            <!-- Items added via JS or manually for now -->
-            <div class="gallery-item reveal" data-category="portraits">
-                <div class="placeholder-img" style="background: #222;">Portrait 1</div>
-            </div>
-            <div class="gallery-item reveal" data-category="anatomical">
-                <div class="placeholder-img" style="background: #222;">Anatomical 1</div>
-            </div>
-            <div class="gallery-item reveal" data-category="cinematic">
-                <div class="placeholder-img" style="background: #222;">Cinematic 1</div>
-            </div>
-            <div class="gallery-item reveal" data-category="portraits">
-                <div class="placeholder-img" style="background: #222;">Portrait 2</div>
-            </div>
-            <div class="gallery-item reveal" data-category="anatomical">
-                <div class="placeholder-img" style="background: #222;">Anatomical 2</div>
-            </div>
-            <div class="gallery-item reveal" data-category="cinematic">
-                <div class="placeholder-img" style="background: #222;">Cinematic 2</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Commission Services -->
-    <section id="services" class="services container reveal">
-        <h2 class="playfair">Commission Services</h2>
-        <div class="pricing-table">
-            <div class="pricing-card reveal">
-                <h3>A4 Size Sketch</h3>
-                <div class="price">1,500 INR</div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Ultra-realistic detail</li>
-                    <li><i class="fas fa-check"></i> Premium Paper</li>
-                    <li><i class="fas fa-check"></i> Framing available</li>
-                </ul>
-                <button class="btn-gold book-btn" data-size="A4" data-price="1500">Book Now</button>
-            </div>
-            <div class="pricing-card reveal">
-                <h3>A3 Size Sketch</h3>
-                <div class="price">2,500 INR</div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Ultra-realistic detail</li>
-                    <li><i class="fas fa-check"></i> Premium Paper</li>
-                    <li><i class="fas fa-check"></i> Framing available</li>
-                </ul>
-                <button class="btn-gold book-btn" data-size="A3" data-price="2500">Book Now</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form -->
-    <section id="contact" class="contact container reveal">
-        <h2 class="playfair">Get in Touch</h2>
-        <form id="contactForm">
-            <div class="form-group">
-                <input type="text" id="name" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-                <input type="email" id="email" placeholder="Your Email">
-            </div>
-            <div class="form-group">
-                <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn-gold">Send Message</button>
-        </form>
     </section>
 
     <!-- Footer -->
