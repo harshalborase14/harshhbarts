@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // template_nahrc5o is your Template ID
                 emailjs.send('service_8ry8q0g', 'template_nahrc5o', templateParams)
                     .then(() => {
-                        alert("Thank you, Harshal! Your order has been submitted. I will contact you manually on WhatsApp shortly.");
+                        alert(`Thank you, ${name}! Your order has been submitted. Harshal will contact you manually on WhatsApp shortly.`);
                         orderModal.style.display = 'none';
                         document.body.classList.remove('modal-open');
                         orderForm.reset();
