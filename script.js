@@ -158,19 +158,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+
+            submitBtn.innerText = "Sending Message...";
+            submitBtn.disabled = true;
+
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const messageText = document.getElementById('message').value.trim();
             
-            if (name === "" || messageText === "") {
-                alert("Please fill in both Name and Message fields.");
-                return;
-            }
-            
-            const fullMessage = `Hi Harshal! My name is ${name}.%0A%0A*General Inquiry:*%0A${messageText}%0A%0A*My Email:* ${email || 'Not provided'}`;
-            const whatsappUrl = `https://wa.me/919881413638?text=${fullMessage}`;
-            window.open(whatsappUrl, '_blank');
-            contactForm.reset();
+            const templateParams = {
+                from_name: name,
+                from_email: email || 'Not provided',
+                message: messageText,
+                inquiry_date: new Date().toLocaleString()
+            };
+
+            // service_8ry8q0g is your Service ID
+            // template_nmcxa66 is your Inquiry Template ID
+            emailjs.send('service_8ry8q0g', 'template_nmcxa66', templateParams)
+                .then(() => {
+                    alert(`Thank you, ${name}! Your message has been sent. Harshal will get back to you shortly via email or phone.`);
+                    contactForm.reset();
+                }, (error) => {
+                    console.error('EmailJS Error:', error);
+                    alert("Oops! Something went wrong. Please try again or contact me directly on Instagram.");
+                })
+                .finally(() => {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                });
         });
     }
 
