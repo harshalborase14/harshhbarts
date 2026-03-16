@@ -122,6 +122,7 @@ body {
 /* Sections General */
 section {
     padding: 100px 0;
+    scroll-margin-top: 80px; /* Adjust this based on header height */
 }
 
 section h2 {
@@ -174,21 +175,27 @@ section h2::after {
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    border: 1px solid #222;
-}
-
-.placeholder-img {
+    border: 8px solid #1a1a1a;
+    background: #1a1a1a;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: var(--transition);
     aspect-ratio: 1/1;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1a1a1a;
-    transition: var(--transition);
 }
 
-.gallery-item:hover .placeholder-img {
-    transform: scale(1.05);
-    background: #252525;
+.gallery-item:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: var(--transition);
 }
 
 /* Services / Pricing */
@@ -293,34 +300,36 @@ section h2::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 .modal-content {
     background: var(--card-bg);
-    padding: 40px;
+    padding: 30px;
     max-width: 500px;
     width: 100%;
     border: 1px solid var(--gold);
     position: relative;
-    border-radius: 10px;
+    border-radius: 15px;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .close-modal {
     position: absolute;
-    top: 20px;
-    right: 25px;
+    top: 15px;
+    right: 20px;
     color: var(--white);
-    font-size: 30px;
+    font-size: 28px;
     cursor: pointer;
 }
 
 .modal-content h2 {
     margin-bottom: 20px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: left;
 }
 
@@ -329,7 +338,7 @@ section h2::after {
 }
 
 #orderSummary {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     color: var(--text-muted);
 }
 
@@ -393,24 +402,35 @@ footer p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.98);
     justify-content: center;
     align-items: center;
+    touch-action: none;
 }
 
 .lightbox-content {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 100vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Prevent scrolling when lightbox is open */
+body.modal-open {
+    overflow: hidden;
 }
 
 .close {
     position: absolute;
-    top: 30px;
-    right: 40px;
+    top: 20px;
+    right: 30px;
     color: #fff;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 2001;
 }
 
 .lightbox-nav {
@@ -418,15 +438,25 @@ footer p {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0 50px;
+    padding: 0 20px;
+    pointer-events: none;
 }
 
 .lightbox-nav button {
-    background: transparent;
+    background: rgba(0,0,0,0.5);
     border: none;
     color: #fff;
-    font-size: 40px;
+    font-size: 30px;
     cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    pointer-events: auto;
+    transition: var(--transition);
+}
+
+.lightbox-nav button:hover {
+    color: var(--gold);
+    background: rgba(0,0,0,0.8);
 }
 
 /* Reveal Animation */
@@ -441,7 +471,38 @@ footer p {
     transform: translateY(0);
 }
 
-/* Responsive Design Improvements */
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--gold);
+    cursor: pointer;
+}
+
+.nav-links a.active-link {
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .contact-info p {
+        justify-content: center;
+    }
+}
 
 /* Tablet & Smaller Laptops (1024px and below) */
 @media (max-width: 1024px) {
@@ -464,20 +525,34 @@ footer p {
         padding: 60px 0;
     }
 
-    .hero h1 {
-        font-size: 3rem;
+    .menu-toggle {
+        display: block;
     }
 
     .nav-links {
-        gap: 15px;
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--card-bg);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        padding: 20px 0;
+        border-bottom: 1px solid var(--gold);
+    }
+
+    .nav-links.active {
+        right: 0;
     }
 
     .nav-links li {
-        margin-left: 15px;
+        margin: 15px 0;
     }
 
-    .nav-links a {
-        font-size: 0.8rem;
+    .hero h1 {
+        font-size: 2.8rem;
     }
 
     .pricing-table {
@@ -493,28 +568,17 @@ footer p {
 
 /* Phones (600px and below) */
 @media (max-width: 600px) {
-    .sticky-header nav {
-        flex-direction: column;
-        gap: 10px;
+    .container {
+        padding: 0 20px;
     }
 
     .logo {
-        font-size: 1.3rem;
-    }
-
-    .nav-links {
-        margin-left: 0;
-        justify-content: center;
-        width: 100%;
-        flex-wrap: wrap;
-    }
-
-    .nav-links li {
-        margin: 0 10px;
+        font-size: 1.2rem;
     }
 
     .hero {
-        height: 70vh;
+        height: auto;
+        padding: 100px 0 60px;
     }
 
     .hero h1 {
@@ -522,12 +586,26 @@ footer p {
     }
 
     .subtitle {
-        font-size: 1rem;
+        font-size: 0.9rem;
         letter-spacing: 2px;
     }
 
+    .hero-image-container {
+        width: 200px;
+        height: 200px;
+    }
+
     section h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .filter-buttons {
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
     }
 
     .gallery-grid {
@@ -536,15 +614,20 @@ footer p {
 
     .modal-content {
         padding: 30px 20px;
+        border-radius: 15px;
     }
 
     .modal-content h2 {
         font-size: 1.5rem;
     }
 
-    .social-links {
-        flex-direction: column;
-        gap: 10px;
+    .btn-gold {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-group input, .form-group textarea {
+        font-size: 16px; /* Prevents auto-zoom on iOS */
     }
 }
 
