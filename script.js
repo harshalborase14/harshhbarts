@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             doc.setTextColor(...goldColor);
             doc.setFontSize(24);
-            doc.text("harshh_b_arts", 105, 20, { align: "center" });
+            doc.text("justanart_hb", 105, 20, { align: "center" });
             
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(10);
@@ -418,9 +418,9 @@ document.addEventListener('DOMContentLoaded', () => {
             doc.text("to confirm the reference photo and delivery timeline.", 105, 185, { align: "center" });
             
             doc.setTextColor(...darkColor);
-            doc.text("Instagram: @harshh_b_arts | Email: artbyharshal14@gmail.com", 105, 200, { align: "center" });
+            doc.text("Instagram: @justanart_hb | Email: artbyharshal14@gmail.com", 105, 200, { align: "center" });
 
-            doc.save(`Receipt_harshh_b_arts_${name.replace(/\s+/g, '_')}.pdf`);
+            doc.save(`Receipt_justanart_hb_${name.replace(/\s+/g, '_')}.pdf`);
         }
 
         const inputs = [countryCurrency, indianState, portraitCategory, framingOption];

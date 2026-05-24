@@ -1,4 +1,4 @@
-# harshh_b_arts | Professional Sketch Artist Portfolio
+# justanart_hb | Professional Sketch Artist Portfolio
 
 A high-end, responsive portfolio website for **Harshal Borase**, a professional sketch artist. This website showcases realistic charcoal and graphite artworks, anatomical sketches, and cinematic art.
 
@@ -48,8 +48,8 @@ The website uses a **Premium Dark Theme** with a **Gold (#d4af37)** accent to re
 ## 👤 Author
 
 **Harshal Borase**
-- Instagram: [@harshh_b_arts](https://www.instagram.com/harshh_b_arts/)
+- Instagram: [@justanart_hb](https://www.instagram.com/justanart_hb/)
 - Phone: +91 9881413638
 
 ---
-*© 2026 harshh_b_arts. All rights reserved.*
+*© 2026 justanart_hb. All rights reserved.*
