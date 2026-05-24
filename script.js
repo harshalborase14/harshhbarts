@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 inquiry_date: new Date().toLocaleString()
             };
 
-            emailjs.send('service_8ry8q0g', 'template_nmcxa66', templateParams)
+            emailjs.send('service_qd3mi3c', 'template_q0sp0sd', templateParams)
                 .then(() => {
                     alert(`Thank you, ${name}! Your message has been sent. Harshal will get back to you shortly via email or phone.`);
                     contactForm.reset();
@@ -503,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     order_date: new Date().toLocaleString()
                 };
 
-                emailjs.send('service_8ry8q0g', 'template_nahrc5o', templateParams)
+                emailjs.send('service_qd3mi3c', 'template_4kowt8b', templateParams)
                     .then(() => {
                         alert(`Thank you, ${name}! Your order has been submitted and your receipt is downloading. Harshal will contact you shortly on WhatsApp.`);
                         
