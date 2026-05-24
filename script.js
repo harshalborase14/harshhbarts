@@ -469,10 +469,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.innerText = "Processing...";
                 submitBtn.disabled = true;
 
-                const name = document.getElementById('orderName').value;
-                const phone = document.getElementById('orderPhone').value;
-                const address = document.getElementById('orderAddress').value;
-                const fullPhone = countryCodeInput.value + " " + phone;
+                const nameEl = document.getElementById('orderName');
+                const phoneEl = document.getElementById('orderPhone');
+                const addressEl = document.getElementById('orderAddress');
+                const noteEl = document.getElementById('orderNote');
+                
+                const name = nameEl ? nameEl.value : 'Not provided';
+                const phone = phoneEl ? phoneEl.value : 'Not provided';
+                const address = addressEl ? addressEl.value : (noteEl ? noteEl.value : 'Not provided');
+                const fullPhone = (countryCodeInput && countryCodeInput.value ? countryCodeInput.value : "") + " " + phone;
                 
                 const pricing = calculateTotal();
                 

@@ -64,7 +64,7 @@
         <div class="modal-content reveal">
             <span class="close-modal">&times;</span>
             <h2 class="playfair">Confirm Your Order</h2>
-            <p id="orderSummary">You are ordering a <span id="selectedSize"></span> Sketch for <span id="selectedPrice"></span>.</p>
+            <p id="orderSummary">You are ordering a <span id="selectedSize"></span> Sketch.</p>
             <form id="orderForm">
                 <div class="form-group">
                     <input type="text" id="orderName" placeholder="Full Name" required>
@@ -73,8 +73,17 @@
                     <input type="tel" id="orderPhone" placeholder="WhatsApp Number" required>
                 </div>
                 <div class="form-group">
-                    <textarea id="orderNote" rows="3" placeholder="Any special requests? (e.g. Occasion, deadline)"></textarea>
+                    <textarea id="orderAddress" rows="3" placeholder="Full Delivery Address" required></textarea>
                 </div>
+                <!-- Hidden fields to avoid errors in calculation script if present on index -->
+                <div style="display:none;">
+                    <select id="countryCurrency"><option value="IN" selected>India</option></select>
+                    <select id="indianState"><option value="MH" selected>Maharashtra</option></select>
+                    <select id="portraitCategory"><option value="single" selected>Single</option></select>
+                    <select id="framingOption"><option value="no" selected>No</option></select>
+                    <input type="text" id="countryCode" value="+91">
+                </div>
+
                 <p class="instruction-text">Note: You will be redirected to WhatsApp to send your reference photo.</p>
                 <button type="submit" class="btn-gold">Proceed to WhatsApp</button>
             </form>
