@@ -276,7 +276,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const category = portraitCategory.value;
             if (category === 'couple') categoryAddon = 500;
             if (category === 'group') {
-                const groupBase = (currentSize === 'A4') ? 3000 : 5000;
+                let groupBase = 5000;
+                if (currentSize === 'A4') groupBase = 3000;
+                if (currentSize === 'A2') groupBase = 8000;
                 const adjustedGroupBase = isIndia ? groupBase : (groupBase * 1.6);
                 categoryAddon = adjustedGroupBase - baseAmountINR;
             }
@@ -287,7 +289,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let framingAddon = 0;
             const framing = framingOption.value;
             if (framing === 'yes') {
-                framingAddon = (currentSize === 'A4') ? 250 : 500;
+                if (currentSize === 'A4') framingAddon = 250;
+                else if (currentSize === 'A3') framingAddon = 500;
+                else if (currentSize === 'A2') framingAddon = 1000;
+                else framingAddon = 500; // default
             }
             totalINR += framingAddon;
 
@@ -299,15 +304,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (state === 'MH') {
                     shippingCost = 100;
                     if (currentSize === 'A3' && framing === 'yes') shippingCost += 150;
+                    if (currentSize === 'A2' && framing === 'yes') shippingCost += 300;
                     shippingText = "Domestic (Maharashtra)";
                 } else {
                     shippingCost = 300;
                     if (currentSize === 'A3' && framing === 'yes') shippingCost += 300;
+                    if (currentSize === 'A2' && framing === 'yes') shippingCost += 500;
                     shippingText = "Domestic (Rest of India)";
                 }
             } else {
                 shippingCost = data.shipping;
-                if (currentSize === 'A3' && framing === 'yes') {
+                if ((currentSize === 'A3' || currentSize === 'A2') && framing === 'yes') {
                     if (countryID === 'US' || countryID === 'CA' || countryID === 'AU') shippingCost += 1600;
                     else if (countryID === 'GB' || countryID.startsWith('EU') || countryID === 'DE' || countryID === 'FR') shippingCost += 1200;
                     else shippingCost += 1000;
