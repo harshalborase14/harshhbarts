@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         alert(`Thank you, ${name}! Your order has been submitted and your receipt is downloading. Harshal will contact you shortly on WhatsApp.`);
                         
                         const waMessage = `Hello Harshal, I just placed an order!\n\n*Order Details:*\n- Name: ${name}\n- Size: ${currentSize}\n- Category: ${catText}\n- Framing: ${frameText}\n- Total: ${pricing.symbol}${pricing.converted}\n\nI have also downloaded the receipt. Please let me know the next steps.`;
-                        const waUrl = `https://wa.me/919307563143?text=${encodeURIComponent(waMessage)}`;
+                        const waUrl = `https://wa.me/YOUR_PHONE_NUMBER?text=${encodeURIComponent(waMessage)}`;
                         
                         setTimeout(() => {
                             window.open(waUrl, '_blank');

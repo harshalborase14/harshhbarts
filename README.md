@@ -14,9 +14,10 @@ A high-end, responsive portfolio website for **Harshal Borase**, a professional 
     - User-friendly Hamburger menu for mobile navigation.
     - Touch-optimized buttons and forms.
 - **WhatsApp Integration**: 
-    - "Book Now" system that sends order details directly to WhatsApp.
-    - Contact form that pre-fills WhatsApp messages for inquiries.
+    - "Book Now" system that redirects to WhatsApp with order details.
+    - Automated pricing calculations for different sizes and categories.
 - **Enhanced UX**:
+    - **Price Transparency**: Detailed breakdown of costs (Base, Category, Framing, Shipping) in the order modal.
     - **History API Support**: Mobile back button closes the lightbox instead of exiting the site.
     - **Scroll-Lock**: Background scrolling is disabled when viewing photos.
     - **Smooth Animations**: Intersection Observer API used for "Scroll Reveal" effects.
@@ -26,12 +27,12 @@ A high-end, responsive portfolio website for **Harshal Borase**, a professional 
 - **Frontend**: HTML5, CSS3 (Vanilla CSS), JavaScript (Vanilla JS)
 - **Icons**: Font Awesome 6.0
 - **Fonts**: Google Fonts (Playfair Display & Inter)
-- **Integration**: WhatsApp Business API
+- **Integration**: EmailJS (Order handling), WhatsApp Business API
 
 ## 📂 Project Structure
 
 ```text
-ridhi-arts-portfolio/
+harshhbarts/
 ├── index.html        # Home & About the Artist
 ├── gallery.html      # Portfolio / Art Gallery
 ├── services.html     # Commission Pricing & Booking
@@ -49,7 +50,7 @@ The website uses a **Premium Dark Theme** with a **Gold (#d4af37)** accent to re
 
 **Harshal Borase**
 - Instagram: [@justanart_hb](https://www.instagram.com/justanart_hb/)
-- Phone: +91 9881413638
+- Email: artbyharshal14@gmail.com
 
 ---
 *© 2026 justanart_hb. All rights reserved.*
