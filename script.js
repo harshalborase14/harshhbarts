@@ -331,6 +331,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const convertedTotal = (totalINR * rate).toFixed(2);
             
+            // Update Breakdown UI
+            const breakdownBase = document.getElementById('breakdownBase');
+            const breakdownCategory = document.getElementById('breakdownCategory');
+            const breakdownFraming = document.getElementById('breakdownFraming');
+            const breakdownShipping = document.getElementById('breakdownShipping');
+
+            if (breakdownBase) breakdownBase.innerText = `${symbol}${(baseAmountINR * rate).toFixed(2)}`;
+            if (breakdownCategory) breakdownCategory.innerText = `${symbol}${(categoryAddon * rate).toFixed(2)}`;
+            if (breakdownFraming) breakdownFraming.innerText = `${symbol}${(framingAddon * rate).toFixed(2)}`;
+            if (breakdownShipping) breakdownShipping.innerText = `${symbol}${(shippingCost * rate).toFixed(2)}`;
+
             if (finalTotalPriceSpan) finalTotalPriceSpan.innerText = `${symbol}${convertedTotal}`;
             if (countryCodeInput) countryCodeInput.value = code;
 

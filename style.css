@@ -376,6 +376,32 @@ section h2::after {
     border: 1px dashed var(--gold);
 }
 
+.price-breakdown {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.breakdown-item span:last-child {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.breakdown-item:last-child {
+    margin-bottom: 0;
+    padding-top: 8px;
+    border-top: 1px solid #333;
+}
+
 .total-price-box span:first-child {
     font-size: 1rem;
     color: var(--text-muted);
